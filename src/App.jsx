@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import CompactModelList from './components/CompactModelList.jsx';
+import HardwareFitLegend from './components/HardwareFitLegend.jsx';
 import ModelCard from './components/ModelCard.jsx';
 import ModelSelector from './components/ModelSelector.jsx';
 import ModelSummary from './components/ModelSummary.jsx';
@@ -28,6 +29,8 @@ function App() {
       </section>
 
       <ModelSummary models={models} />
+
+      <HardwareFitLegend />
 
       <ViewToggle viewMode={viewMode} onChangeView={setViewMode} />
 
