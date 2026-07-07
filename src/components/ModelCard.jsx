@@ -1,5 +1,9 @@
 import EncoderDecoderPanel from './EncoderDecoderPanel.jsx';
 
+function getFitClassName(category) {
+  return category.toLowerCase().replaceAll(' ', '-');
+}
+
 function RuntimePanel({ runtime }) {
   if (!runtime) {
     return null;
@@ -43,8 +47,10 @@ function RuntimePanel({ runtime }) {
 }
 
 function ModelCard({ model }) {
+  const fitClassName = `fit-${getFitClassName(model.hardwareFit.category)}`;
+
   return (
-    <article className="model-card">
+    <article className={`model-card ${fitClassName}`}>
       <div className="model-card-header">
         <div>
           <p className="eyebrow">Featured Model</p>
@@ -52,7 +58,9 @@ function ModelCard({ model }) {
           <p className="model-repo">{model.repo}</p>
         </div>
 
-        <span className="fit-badge">{model.hardwareFit.category}</span>
+        <span className={`fit-badge ${fitClassName}`}>
+          {model.hardwareFit.category}
+        </span>
       </div>
 
       <dl className="model-facts">

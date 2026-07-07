@@ -704,3 +704,78 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+.fit-badge.fit-small {
+  border-color: rgba(74, 222, 128, 0.58);
+  background: rgba(34, 197, 94, 0.14);
+  color: #86efac;
+}
+
+.fit-badge.fit-medium {
+  border-color: rgba(250, 204, 21, 0.6);
+  background: rgba(234, 179, 8, 0.14);
+  color: #fde68a;
+}
+
+.fit-badge.fit-large {
+  border-color: rgba(251, 146, 60, 0.62);
+  background: rgba(249, 115, 22, 0.14);
+  color: #fdba74;
+}
+
+.fit-badge.fit-very-large {
+  border-color: rgba(248, 113, 113, 0.65);
+  background: rgba(239, 68, 68, 0.14);
+  color: #fca5a5;
+}
+
+.model-card.fit-small {
+  border-top-color: rgba(74, 222, 128, 0.68);
+}
+
+.model-card.fit-medium {
+  border-top-color: rgba(250, 204, 21, 0.7);
+}
+
+.model-card.fit-large {
+  border-top-color: rgba(251, 146, 60, 0.72);
+}
+
+.model-card.fit-very-large {
+  border-top-color: rgba(248, 113, 113, 0.76);
+}
+
+.compact-fit-badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  padding: 5px 9px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.compact-fit-badge.fit-small {
+  border-color: rgba(74, 222, 128, 0.58);
+  background: rgba(34, 197, 94, 0.14);
+  color: #86efac;
+}
+
+.compact-fit-badge.fit-medium {
+  border-color: rgba(250, 204, 21, 0.6);
+  background: rgba(234, 179, 8, 0.14);
+  color: #fde68a;
+}
+
+.compact-fit-badge.fit-large {
+  border-color: rgba(251, 146, 60, 0.62);
+  background: rgba(249, 115, 22, 0.14);
+  color: #fdba74;
+}
+
+.compact-fit-badge.fit-very-large {
+  border-color: rgba(248, 113, 113, 0.65);
+  background: rgba(239, 68, 68, 0.14);
+  color: #fca5a5;
+}
