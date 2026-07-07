@@ -4,6 +4,57 @@ A standalone React learning project for comparing Hugging Face Transformer model
 
 The app is designed to teach React fundamentals while helping viewers understand model architecture, sizing signals, and approximate inference hardware fit.
 
+## Screenshots
+
+### Header and hardware fit legend
+
+![Header and hardware fit legend](docs/screenshots/01_Header-Legend.png)
+
+The landing section introduces the project, summarizes the model inventory, and explains the hardware fit categories used throughout the dashboard.
+
+### View mode and architecture filter controls
+
+![View mode and architecture filter controls](docs/screenshots/02_View-Filter.png)
+
+Users can switch between Detail, Cards, and Compact views, then filter models by architecture type.
+
+### Detail view
+
+![Detail view](docs/screenshots/03_View-Details.png)
+
+The master-detail layout lets users select one model and inspect its architecture, runtime profile, encoder/decoder structure, and hardware-fit summary.
+
+### Cards view
+
+![Cards view](docs/screenshots/04_View-Cards.png)
+
+The responsive card grid provides a visual overview of all included Transformer and GGUF model profiles.
+
+### Compact view
+
+![Compact view](docs/screenshots/05_View-Compact.png)
+
+The compact layout makes it easier to scan model name, task, architecture, and hardware-fit category in a table-like format.
+
+### Sizing metrics: core sizing
+
+![Sizing metrics core sizing](docs/screenshots/06_SizingMetrics_01-CoreSizing.png)
+
+The sizing metrics panel exposes lower-level model details such as parameter count, context length, hidden width, source config field, and vocabulary size.
+
+### Sizing metrics: layers, attention, and tooltip help
+
+![Sizing metrics layers attention tooltip](docs/screenshots/06_SizingMetrics_02-Layers-Attention-Tooltip.png)
+
+Accordion sections organize deeper architecture metrics, while tooltip help explains concepts like attention heads and head dimensions.
+
+### Sizing metrics: feed-forward, storage, and fit summary
+
+![Sizing metrics feed-forward storage tooltip fit summary](docs/screenshots/06_SizingMetrics_03-FeedForward-StorageTooltip-FitSummary.png)
+
+Additional sections show feed-forward dimensions, runtime weight size, repository size, and the model-specific hardware-fit summary.
+
+
 ## Current features
 
 - Manual React + Vite project setup
