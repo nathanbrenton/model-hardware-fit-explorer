@@ -4,6 +4,14 @@ function getFitClassName(category) {
   return category.toLowerCase().replaceAll(' ', '-');
 }
 
+function formatContextWindow(contextWindow) {
+  if (typeof contextWindow === 'number') {
+    return `${contextWindow.toLocaleString()} tokens`;
+  }
+
+  return contextWindow;
+}
+
 function RuntimePanel({ runtime }) {
   if (!runtime) {
     return null;
@@ -29,7 +37,7 @@ function RuntimePanel({ runtime }) {
 
         <div>
           <dt>Context</dt>
-          <dd>{runtime.contextWindow.toLocaleString()} tokens</dd>
+          <dd>{formatContextWindow(runtime.contextWindow)}</dd>
         </div>
       </dl>
 
