@@ -62,6 +62,16 @@ function MetricItem({ label, value, note, helpText }) {
   );
 }
 
+function MetricSection({ title, children, defaultOpen = false }) {
+  return (
+    <details className="metric-section" open={defaultOpen}>
+      <summary>{title}</summary>
+
+      <dl className="metrics-grid">{children}</dl>
+    </details>
+  );
+}
+
 function ModelMetricsPanel({ model }) {
   const { sizing } = model;
 
@@ -84,7 +94,7 @@ function ModelMetricsPanel({ model }) {
         </div>
       </div>
 
-      <dl className="metrics-grid">
+      <MetricSection title="Core sizing" defaultOpen>
         <MetricItem
           helpText={metricHelp.parameters}
           label="Parameters"
@@ -112,7 +122,9 @@ function ModelMetricsPanel({ model }) {
           note="Number of token IDs the tokenizer/model can use."
           value={sizing.vocabSize}
         />
+      </MetricSection>
 
+      <MetricSection title="Layers">
         <MetricItem
           helpText={metricHelp.layers}
           label="Encoder layers"
@@ -124,7 +136,9 @@ function ModelMetricsPanel({ model }) {
           label="Decoder layers"
           value={sizing.decoderLayers}
         />
+      </MetricSection>
 
+      <MetricSection title="Attention">
         <MetricItem
           helpText={metricHelp.attentionHeads}
           label="Encoder heads"
@@ -150,7 +164,9 @@ function ModelMetricsPanel({ model }) {
           note="Calculated as d_model ÷ decoder attention heads."
           value={decoderHeadDimension}
         />
+      </MetricSection>
 
+      <MetricSection title="Feed-forward">
         <MetricItem
           helpText={metricHelp.ffn}
           label="Encoder FFN dim"
@@ -162,7 +178,9 @@ function ModelMetricsPanel({ model }) {
           label="Decoder FFN dim"
           value={sizing.decoderFfnDim}
         />
+      </MetricSection>
 
+      <MetricSection title="Storage">
         <MetricItem
           helpText={metricHelp.runtimeWeights}
           label="Runtime weights"
@@ -174,7 +192,7 @@ function ModelMetricsPanel({ model }) {
           label="Repo size"
           value={sizing.repoSize}
         />
-      </dl>
+      </MetricSection>
     </section>
   );
 }

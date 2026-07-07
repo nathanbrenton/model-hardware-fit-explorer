@@ -999,3 +999,59 @@ h1 {
   opacity: 1;
   transform: translateY(0);
 }
+
+.metric-section {
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  background: rgba(5, 7, 10, 0.24);
+  overflow: visible;
+}
+
+.metric-section + .metric-section {
+  margin-top: 12px;
+}
+
+.metric-section summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 15px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.metric-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.metric-section summary::after {
+  content: "+";
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.metric-section[open] summary {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.metric-section[open] summary::after {
+  content: "−";
+  border-color: rgba(125, 211, 252, 0.5);
+  color: var(--accent);
+}
+
+.metric-section .metrics-grid {
+  padding: 14px;
+}
