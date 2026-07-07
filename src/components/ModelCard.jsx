@@ -1,5 +1,47 @@
 import EncoderDecoderPanel from './EncoderDecoderPanel.jsx';
 
+function RuntimePanel({ runtime }) {
+  if (!runtime) {
+    return null;
+  }
+
+  return (
+    <section className="runtime-panel" aria-label="Runtime information">
+      <div className="runtime-panel-header">
+        <h3>Runtime</h3>
+        <span>{runtime.format}</span>
+      </div>
+
+      <dl className="runtime-facts">
+        <div>
+          <dt>Quantization</dt>
+          <dd>{runtime.quantization}</dd>
+        </div>
+
+        <div>
+          <dt>Precision</dt>
+          <dd>{runtime.quantizationBits}</dd>
+        </div>
+
+        <div>
+          <dt>Context</dt>
+          <dd>{runtime.contextWindow.toLocaleString()} tokens</dd>
+        </div>
+      </dl>
+
+      <p className="runtime-file">{runtime.fileName}</p>
+
+      <div className="runtime-loaders" aria-label="Supported local loaders">
+        {runtime.loaders.map((loader) => (
+          <span key={loader}>{loader}</span>
+        ))}
+      </div>
+
+      <p className="runtime-notes">{runtime.notes}</p>
+    </section>
+  );
+}
+
 function ModelCard({ model }) {
   return (
     <article className="model-card">
@@ -34,6 +76,8 @@ function ModelCard({ model }) {
           <dd>{model.sizing.repoSize}</dd>
         </div>
       </dl>
+
+      <RuntimePanel runtime={model.runtime} />
 
       <EncoderDecoderPanel encoder={model.encoder} decoder={model.decoder} />
 

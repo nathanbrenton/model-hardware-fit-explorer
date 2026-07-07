@@ -1,5 +1,6 @@
 import { bartLargeMnli } from './bartLargeMnli.js';
 import { bertBaseNer } from './bertBaseNer.js';
+import { cwcMistralNemo12bQ4Km } from './cwcMistralNemo12bQ4Km.js';
 import { distilbartCnn126 } from './distilbartCnn126.js';
 import { distilbertBaseUncased } from './distilbertBaseUncased.js';
 import { distilbertSst2 } from './distilbertSst2.js';
@@ -16,4 +17,5 @@ export const models = [
   bertBaseNer,
   robertaBaseSquad2,
   bartLargeMnli,
+  cwcMistralNemo12bQ4Km,
 ];
