@@ -16,7 +16,7 @@ function App() {
         </p>
       </section>
 
-      <section className="content-section" aria-label="Model cards">
+      <section className="model-grid" aria-label="Model cards">
         {models.map((model) => (
           <ModelCard key={model.id} model={model} />
         ))}
