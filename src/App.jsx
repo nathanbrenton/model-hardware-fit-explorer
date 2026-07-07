@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import ArchitectureFilter from './components/ArchitectureFilter.jsx';
 import CompactModelList from './components/CompactModelList.jsx';
 import HardwareFitLegend from './components/HardwareFitLegend.jsx';
 import ModelCard from './components/ModelCard.jsx';
@@ -11,8 +12,15 @@ import { models } from './data/models/index.js';
 function App() {
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
   const [viewMode, setViewMode] = useState('detail');
+  const [selectedArchitecture, setSelectedArchitecture] = useState('All');
 
-  const selectedModel = models.find((model) => model.id === selectedModelId);
+  const filteredModels =
+    selectedArchitecture === 'All'
+      ? models
+      : models.filter((model) => model.architectureType === selectedArchitecture);
+
+  const selectedModel =
+    models.find((model) => model.id === selectedModelId) ?? models[0];
 
   return (
     <main className="app-shell">
@@ -34,10 +42,15 @@ function App() {
 
       <ViewToggle viewMode={viewMode} onChangeView={setViewMode} />
 
+      <ArchitectureFilter
+        selectedArchitecture={selectedArchitecture}
+        onChangeArchitecture={setSelectedArchitecture}
+      />
+
       {viewMode === 'detail' && (
         <section className="master-detail-layout">
           <ModelSelector
-            models={models}
+            models={filteredModels}
             selectedModelId={selectedModelId}
             onSelectModel={setSelectedModelId}
           />
@@ -50,7 +63,7 @@ function App() {
 
       {viewMode === 'cards' && (
         <section className="model-grid" aria-label="All model cards">
-          {models.map((model) => (
+          {filteredModels.map((model) => (
             <ModelCard key={model.id} model={model} />
           ))}
         </section>
@@ -58,7 +71,7 @@ function App() {
 
       {viewMode === 'compact' && (
         <CompactModelList
-          models={models}
+          models={filteredModels}
           selectedModelId={selectedModelId}
           onSelectModel={setSelectedModelId}
         />

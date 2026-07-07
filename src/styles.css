@@ -822,3 +822,48 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+.architecture-filter {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(21, 27, 35, 0.88), rgba(13, 17, 23, 0.96)),
+    var(--bg-surface-1);
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.filter-button-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-button {
+  padding: 10px 13px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: rgba(13, 17, 23, 0.76);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-weight: 850;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.filter-button:hover {
+  border-color: var(--border-strong);
+  background: rgba(31, 41, 55, 0.84);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.filter-button.is-active {
+  border-color: rgba(125, 211, 252, 0.72);
+  background: rgba(56, 189, 248, 0.14);
+  color: var(--text-primary);
+}
