@@ -8,7 +8,8 @@ function App() {
 
         <p className="hero-summary">
           Compare transformer model architecture, sizing signals, and estimated
-          hardware fit using a simple static React front end.
+          hardware fit while learning React components, props, state, and
+          data-driven UI patterns.
         </p>
       </section>
     </main>
