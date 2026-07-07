@@ -1,5 +1,5 @@
 import ModelCard from './components/ModelCard.jsx';
-import { models } from './data/models.js';
+import { models } from './data/models/index.js';
 
 function App() {
   return (
