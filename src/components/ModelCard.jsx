@@ -1,3 +1,5 @@
+import EncoderDecoderPanel from './EncoderDecoderPanel.jsx';
+
 function ModelCard({ model }) {
   return (
     <article className="model-card">
@@ -32,6 +34,8 @@ function ModelCard({ model }) {
           <dd>{model.sizing.repoSize}</dd>
         </div>
       </dl>
+
+      <EncoderDecoderPanel encoder={model.encoder} decoder={model.decoder} />
 
       <p className="hardware-summary">{model.hardwareFit.summary}</p>
     </article>
