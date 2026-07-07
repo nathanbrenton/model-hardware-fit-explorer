@@ -2,8 +2,6 @@ import ModelCard from './components/ModelCard.jsx';
 import { models } from './data/models.js';
 
 function App() {
-  const featuredModel = models[0];
-
   return (
     <main className="app-shell">
       <section className="hero">
@@ -18,8 +16,10 @@ function App() {
         </p>
       </section>
 
-      <section className="content-section">
-        <ModelCard model={featuredModel} />
+      <section className="content-section" aria-label="Model cards">
+        {models.map((model) => (
+          <ModelCard key={model.id} model={model} />
+        ))}
       </section>
     </main>
   );

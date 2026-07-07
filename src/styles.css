@@ -280,3 +280,8 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+.content-section {
+  display: grid;
+  gap: 22px;
+}
