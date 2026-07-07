@@ -1,4 +1,9 @@
+import ModelCard from './components/ModelCard.jsx';
+import { models } from './data/models.js';
+
 function App() {
+  const featuredModel = models[0];
+
   return (
     <main className="app-shell">
       <section className="hero">
@@ -11,6 +16,10 @@ function App() {
           hardware fit while learning React components, props, state, and
           data-driven UI patterns.
         </p>
+      </section>
+
+      <section className="content-section">
+        <ModelCard model={featuredModel} />
       </section>
     </main>
   );
