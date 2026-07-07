@@ -5,8 +5,10 @@ const metricHelp = {
     'Approximate number of learned weights. More parameters usually means higher memory and compute requirements.',
   context:
     'Maximum number of token positions or runtime context tokens the model can handle.',
-  dModel:
-    'The main hidden/vector width of the transformer. Larger widths usually increase memory and compute per layer.',
+  hiddenWidth:
+    'The main hidden/vector width of the transformer. Configs may call this d_model, hidden_size, dim, n_embd, or another architecture-specific name.',
+  sourceField:
+    'The original config field name used by this model family for the comparable dashboard metric.',
   vocabulary:
     'Number of token IDs the tokenizer/model can represent.',
   layers:
@@ -14,7 +16,7 @@ const metricHelp = {
   attentionHeads:
     'Parallel attention groups inside a transformer layer.',
   headDimension:
-    'Usually calculated as d_model divided by the number of attention heads.',
+    'Usually calculated as hidden width divided by the number of attention heads.',
   ffn:
     'The inner width of the feed-forward network inside each transformer block.',
   runtimeWeights:
@@ -35,8 +37,16 @@ function formatValue(value) {
   return value;
 }
 
-function calculateHeadDimension(dModel, attentionHeads) {
-  if (typeof dModel !== 'number' || typeof attentionHeads !== 'number') {
+function getHiddenWidthValue(sizing) {
+  return sizing.hiddenWidth?.value ?? sizing.dModel;
+}
+
+function getHiddenWidthSourceField(sizing) {
+  return sizing.hiddenWidth?.sourceField ?? 'd_model';
+}
+
+function calculateHeadDimension(hiddenWidth, attentionHeads) {
+  if (typeof hiddenWidth !== 'number' || typeof attentionHeads !== 'number') {
     return 'Not available';
   }
 
@@ -44,7 +54,7 @@ function calculateHeadDimension(dModel, attentionHeads) {
     return 'Not applicable';
   }
 
-  return dModel / attentionHeads;
+  return hiddenWidth / attentionHeads;
 }
 
 function MetricItem({ label, value, note, helpText }) {
@@ -74,14 +84,16 @@ function MetricSection({ title, children, defaultOpen = false }) {
 
 function ModelMetricsPanel({ model }) {
   const { sizing } = model;
+  const hiddenWidth = getHiddenWidthValue(sizing);
+  const hiddenWidthSourceField = getHiddenWidthSourceField(sizing);
 
   const encoderHeadDimension = calculateHeadDimension(
-    sizing.dModel,
+    hiddenWidth,
     sizing.encoderAttentionHeads,
   );
 
   const decoderHeadDimension = calculateHeadDimension(
-    sizing.dModel,
+    hiddenWidth,
     sizing.decoderAttentionHeads,
   );
 
@@ -110,10 +122,17 @@ function ModelMetricsPanel({ model }) {
         />
 
         <MetricItem
-          helpText={metricHelp.dModel}
-          label="d_model"
-          note="Main hidden/vector width."
-          value={sizing.dModel}
+          helpText={metricHelp.hiddenWidth}
+          label="Hidden width"
+          note="Comparable width metric across model families."
+          value={hiddenWidth}
+        />
+
+        <MetricItem
+          helpText={metricHelp.sourceField}
+          label="Width source field"
+          note="Original config naming convention."
+          value={hiddenWidthSourceField}
         />
 
         <MetricItem
@@ -154,14 +173,14 @@ function ModelMetricsPanel({ model }) {
         <MetricItem
           helpText={metricHelp.headDimension}
           label="Encoder head dim"
-          note="Calculated as d_model ÷ encoder attention heads."
+          note="Calculated as hidden width ÷ encoder attention heads."
           value={encoderHeadDimension}
         />
 
         <MetricItem
           helpText={metricHelp.headDimension}
           label="Decoder head dim"
-          note="Calculated as d_model ÷ decoder attention heads."
+          note="Calculated as hidden width ÷ decoder attention heads."
           value={decoderHeadDimension}
         />
       </MetricSection>

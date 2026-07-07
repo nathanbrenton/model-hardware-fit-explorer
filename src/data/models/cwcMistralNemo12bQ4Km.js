@@ -15,6 +15,10 @@ export const cwcMistralNemo12bQ4Km = {
   },
 
   sizing: {
+    hiddenWidth: {
+      value: 'Not listed on model card',
+      sourceField: 'Not available from model card',
+    },
     dModel: 'Not listed on model card',
     encoderLayers: 0,
     decoderLayers: 'Not listed on model card',

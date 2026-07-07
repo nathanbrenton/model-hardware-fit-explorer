@@ -14,6 +14,10 @@ export const distilbertBaseUncased = {
   },
 
   sizing: {
+    hiddenWidth: {
+      value: 768,
+      sourceField: 'dim',
+    },
     dModel: 768,
     encoderLayers: 6,
     decoderLayers: 0,

@@ -14,6 +14,10 @@ export const opusMtFrEn = {
   },
 
   sizing: {
+    hiddenWidth: {
+      value: 512,
+      sourceField: 'd_model',
+    },
     dModel: 512,
     encoderLayers: 6,
     decoderLayers: 6,

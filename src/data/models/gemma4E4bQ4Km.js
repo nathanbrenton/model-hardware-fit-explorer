@@ -15,6 +15,10 @@ export const gemma4E4bQ4Km = {
   },
 
   sizing: {
+    hiddenWidth: {
+      value: 'Not listed in GGUF repo summary',
+      sourceField: 'Not available from GGUF repo summary',
+    },
     dModel: 'Not listed in GGUF repo summary',
     encoderLayers: 0,
     decoderLayers: 'Not listed in GGUF repo summary',

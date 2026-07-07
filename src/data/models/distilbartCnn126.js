@@ -14,6 +14,10 @@ export const distilbartCnn126 = {
   },
 
   sizing: {
+    hiddenWidth: {
+      value: 1024,
+      sourceField: 'd_model',
+    },
     dModel: 1024,
     encoderLayers: 12,
     decoderLayers: 6,

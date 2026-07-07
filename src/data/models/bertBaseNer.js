@@ -14,6 +14,10 @@ export const bertBaseNer = {
   },
 
   sizing: {
+    hiddenWidth: {
+      value: 768,
+      sourceField: 'hidden_size',
+    },
     dModel: 768,
     encoderLayers: 12,
     decoderLayers: 0,

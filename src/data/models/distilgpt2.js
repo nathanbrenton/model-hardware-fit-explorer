@@ -14,6 +14,10 @@ export const distilgpt2 = {
   },
 
   sizing: {
+    hiddenWidth: {
+      value: 768,
+      sourceField: 'n_embd',
+    },
     dModel: 768,
     encoderLayers: 0,
     decoderLayers: 6,
