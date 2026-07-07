@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CompactModelList from './components/CompactModelList.jsx';
 import ModelCard from './components/ModelCard.jsx';
 import ModelSelector from './components/ModelSelector.jsx';
+import ModelSummary from './components/ModelSummary.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
 import { models } from './data/models/index.js';
 
@@ -25,6 +26,8 @@ function App() {
           data-driven UI patterns.
         </p>
       </section>
+
+      <ModelSummary models={models} />
 
       <ViewToggle viewMode={viewMode} onChangeView={setViewMode} />
 
