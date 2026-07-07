@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
+import CompactModelList from './components/CompactModelList.jsx';
 import ModelCard from './components/ModelCard.jsx';
 import ModelSelector from './components/ModelSelector.jsx';
+import ViewToggle from './components/ViewToggle.jsx';
 import { models } from './data/models/index.js';
 
 function App() {
   const [selectedModelId, setSelectedModelId] = useState(models[0].id);
+  const [viewMode, setViewMode] = useState('detail');
 
   const selectedModel = models.find((model) => model.id === selectedModelId);
 
@@ -23,23 +26,37 @@ function App() {
         </p>
       </section>
 
-      <section className="master-detail-layout">
-        <ModelSelector
+      <ViewToggle viewMode={viewMode} onChangeView={setViewMode} />
+
+      {viewMode === 'detail' && (
+        <section className="master-detail-layout">
+          <ModelSelector
+            models={models}
+            selectedModelId={selectedModelId}
+            onSelectModel={setSelectedModelId}
+          />
+
+          <div className="selected-model-panel">
+            <ModelCard model={selectedModel} />
+          </div>
+        </section>
+      )}
+
+      {viewMode === 'cards' && (
+        <section className="model-grid" aria-label="All model cards">
+          {models.map((model) => (
+            <ModelCard key={model.id} model={model} />
+          ))}
+        </section>
+      )}
+
+      {viewMode === 'compact' && (
+        <CompactModelList
           models={models}
           selectedModelId={selectedModelId}
           onSelectModel={setSelectedModelId}
         />
-
-        <div className="selected-model-panel">
-          <ModelCard model={selectedModel} />
-        </div>
-      </section>
-
-      <section className="model-grid" aria-label="All model cards">
-        {models.map((model) => (
-          <ModelCard key={model.id} model={model} />
-        ))}
-      </section>
+      )}
     </main>
   );
 }
