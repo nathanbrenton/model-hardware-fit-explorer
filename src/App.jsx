@@ -20,7 +20,11 @@ function App() {
       : models.filter((model) => model.architectureType === selectedArchitecture);
 
   const selectedModel =
-    models.find((model) => model.id === selectedModelId) ?? models[0];
+    filteredModels.find((model) => model.id === selectedModelId) ??
+    filteredModels[0] ??
+    models[0];
+
+  const activeSelectedModelId = selectedModel.id;
 
   return (
     <main className="app-shell">
@@ -51,7 +55,7 @@ function App() {
         <section className="master-detail-layout">
           <ModelSelector
             models={filteredModels}
-            selectedModelId={selectedModelId}
+            selectedModelId={activeSelectedModelId}
             onSelectModel={setSelectedModelId}
           />
 
@@ -72,7 +76,7 @@ function App() {
       {viewMode === 'compact' && (
         <CompactModelList
           models={filteredModels}
-          selectedModelId={selectedModelId}
+          selectedModelId={activeSelectedModelId}
           onSelectModel={setSelectedModelId}
         />
       )}
