@@ -1,4 +1,5 @@
 import EncoderDecoderPanel from './EncoderDecoderPanel.jsx';
+import ModelMetricsPanel from './ModelMetricsPanel.jsx';
 
 function getFitClassName(category) {
   return category.toLowerCase().replaceAll(' ', '-');
@@ -96,6 +97,8 @@ function ModelCard({ model }) {
       <RuntimePanel runtime={model.runtime} />
 
       <EncoderDecoderPanel encoder={model.encoder} decoder={model.decoder} />
+
+      <ModelMetricsPanel model={model} />
 
       <p className="hardware-summary">{model.hardwareFit.summary}</p>
     </article>
